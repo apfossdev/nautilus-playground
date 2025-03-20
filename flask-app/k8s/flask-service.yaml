@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-service
+  namespace: new-beginnings
+  labels:
+    k8s-app: flask-app
+spec:
+  selector:
+    k8s-app: flask-app
+  ports:
+  - protocol: TCP
+    port: 5000
+    targetPort: 5000
+  type: ClusterIP

@@ -17,7 +17,7 @@ spec: # describes the desired state of the deployment
     spec:
       containers: # Lists the containers that will run inside the pod
       - name: postgres # references this container with the given name, here postgres
-        image: postgres:17.4-alpine3.21 # image we will be using from hub.docker.com, sizes generally follow: alpine < noble < slim-bullseye < slim-bookworm
+        image: postgres:latest # image we will be using from hub.docker.com, sizes generally follow: alpine < noble < slim-bullseye < slim-bookworm
         env: # sets environment variables for our container
         - name: POSTGRES_PASSWORD
           value: "super_duper_secret_postgres_password"

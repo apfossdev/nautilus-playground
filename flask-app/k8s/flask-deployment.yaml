@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-app
+  namespace: new-beginnings
+  labels:
+    k8s-app: flask-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: flask-app
+  template:
+    metadata:
+      labels:
+        k8s-app: flask-app
+    spec:
+      containers:
+      - name: flask-app
+        image: apfossdev/nautilus-flask-app:latest
+        ports:
+        - containerPort: 5000
+        env:
+        - name: DB_HOST
+          value: "postgres-service"
+        - name: DB_USER
+          value: "postgres"
+        - name: POSTGRES_PASSWORD
+          value: "super_duper_secret_postgres_password"
+        - name: POSTGRES_DB
+          value: "podtracker"
+        resources:
+          limits:
+            memory: "500Mi"
+            cpu: "500m"
+          requests:
+            memory: "100Mi"
+            cpu: "50m"
